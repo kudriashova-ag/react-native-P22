@@ -1,11 +1,16 @@
-import { Button as ButtonRN, Image, ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Button as ButtonRN, FlatList, Image, ImageBackground, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Button from './src/ui/components/Button/Button';
 import EvilIcons from '@expo/vector-icons/EvilIcons';
 import Separator from './src/ui/components/Separator/Separator';
+import { useState } from 'react';
+import AppModal from './src/ui/components/AppModal/AppModal';
+import { products } from './src/data/products';
 
 
 export default function App() {
+  const [visible, setVisible] = useState(false);
+
   const handlePress = () => {
     alert('You clicked the button!');
   }
@@ -27,13 +32,25 @@ export default function App() {
 
       <Button
         text='Click me'
-        onPress={handlePress}
+        onPress={() => setVisible(true)}
         variant='danger'
         disabled={false}
         icon={<EvilIcons name="arrow-right" size={30} color="white" />}
         style={{ alignSelf: 'flex-start' }}
       />
-      <Separator size={20} />
+
+      <AppModal visible={visible} onClose={() => setVisible(false)}>
+        <Text>Modal content</Text>
+      </AppModal>
+
+      <FlatList
+        data={products}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => <View><Text>{item.title}</Text></View>}
+      />
+
+
+      {/* <Separator size={20} />
 
       <Image
         source={{ uri: 'https://mukachevo.net/uploads/media/images/image/d5/61/d5613d3f9a154db9997217308c5d3cebfsvnk8674igerxe_image.jpg' }}
@@ -52,7 +69,7 @@ export default function App() {
         style={{ width: '100%', height: 50 }}
       >
         <Text>Hello</Text>
-      </ImageBackground>
+      </ImageBackground> */}
 
 
 
@@ -77,5 +94,6 @@ const styles = StyleSheet.create({
   },
   pressed: {
     opacity: 0.6,
-  }
+  },
+  
 });
