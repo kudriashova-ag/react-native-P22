@@ -1,12 +1,16 @@
 import { Link } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
+import Separator from '../src/ui/components/Separator/Separator';
 
 const Index = () => {
     return (
-        <View style={styles.container}>
-            <Text style={styles.heading}>Home</Text>
-            <Link href="/about">About</Link>
-        </View>
+      <View style={styles.container}>
+        <Text style={styles.heading}>Home</Text>
+        <Separator size={20} />
+        <Link href="/about">About</Link>
+        <Separator size={10} />
+        <Link href="/productList">Product list</Link>
+      </View>
     );
 }
 
