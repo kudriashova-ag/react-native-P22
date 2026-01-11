@@ -6,7 +6,7 @@ const ProductItem = ({product, buyProduct, removeProduct}) => {
     return (
         <View style={styles.container}>
             
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <View style={{flexDirection: 'row', alignItems: 'center',flex: 3 }}>
             <Switch value={product.buy} onValueChange={buyProduct} />
             <Text
               style={[
@@ -42,10 +42,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         marginVertical: 5,
-        marginHorizontal:15
+    marginHorizontal: 15,
+        gap: 10
     },
     name: {
-        fontSize: 16
+      fontSize: 16,
+     
     }
 })
 

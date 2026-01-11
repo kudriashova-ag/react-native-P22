@@ -29,13 +29,13 @@ const ProductForm = ({ addProduct }) => {
         style={[styles.input, nameError && styles.inputError]}
         onChangeText={handleNameChange}
       />
+      {nameError && <Text style={styles.errorText}>Name is required</Text>}
 
       <TextInput
         keyboardType="number-pad"
         style={[styles.input, nameError && styles.inputError]}
       />
           
-      {nameError && <Text style={styles.errorText}>Name is required</Text>}
       <Separator size={20} />
       <Button text="Add Product" onPress={addHandler} />
     </View>
