@@ -9,6 +9,7 @@ const RootLayout = () => {
 
   return (
     <View style={styles.container}>
+      {/* <Slot /> */}
       <Stack
         screenOptions={{
           headerStyle: {

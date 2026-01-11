@@ -1,17 +1,28 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Switch, Text, View } from 'react-native';
+import Button from '../ui/components/Button/Button';
 
-const ProductItem = ({product}) => {
+const ProductItem = ({product, buyProduct, removeProduct}) => {
     return (
         <View style={styles.container}>
-            <Text style={[
+            
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <Switch value={product.buy} onValueChange={buyProduct} />
+            <Text
+              style={[
                 styles.name,
                 {
-                    textDecorationLine: product.buy ? 'line-through' : 'none',
-                    color: product.buy ? 'gray' : 'red'
-                }
-            ]}>{product.name}</Text>
+                  textDecorationLine: product.buy ? "line-through" : "none",
+                  color: product.buy ? "gray" : "red",
+                },
+              ]}
+            >
+              {product.name}
+                </Text>
         </View>
+            
+        <Button text="Remove" onPress={removeProduct} variant="danger" />
+      </View>
     );
 }
 
@@ -26,10 +37,15 @@ const styles = StyleSheet.create({
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 0.2,
-        shadowRadius: 3
+        shadowRadius: 3,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginVertical: 5,
+        marginHorizontal:15
     },
     name: {
-        fontSize: 18
+        fontSize: 16
     }
 })
 
